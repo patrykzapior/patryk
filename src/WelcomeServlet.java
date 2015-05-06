@@ -9,21 +9,7 @@ import java.io.IOException;
 
 public class WelcomeServlet extends javax.servlet.http.HttpServlet {
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        // TODO Last id has to be got from database
-        int id = 0;
-        String name = request.getParameter("name");
-        String lastname = request.getParameter("lastname");
-        String password = request.getParameter("password");
-        String email = request.getParameter("email");
-
-        User user = new User(id, name, lastname, password, email);
-
-        UserDao userDao = new UserDao();
-        userDao.connect(new DataSource());
-        userDao.save(user);
-
-        request.getRequestDispatcher("index.jsp").forward(request, response);
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.getRequestDispatcher("index.jsp");
     }
 }
